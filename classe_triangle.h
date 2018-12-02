@@ -5,12 +5,9 @@
 class Triangle
 {
 private:
-
-public:
 	// données
-	//int* coord = new int[3];
 	int* coord = new int[3];
-
+public:
 	// constructeur & destructeur
 	Triangle() { coord[0]=coord[1]=coord[2]=-1; }
 	Triangle( int a, int b, int c );
@@ -18,11 +15,12 @@ public:
 
 	// fonctions
 	void affiche(void);
+	void attrib_points( int a, int b, int c);
 
 };
 
-////////////////////////////////// FONCTIONS ///////////////////////////////////
+////////////////////////////////// FONCTIONS NON-MEMBRES ///////////////////////////////////
 
-//Triangle* LecTriangles(const char* name, int &N)
+Triangle* LecTriangles(const char* name, int &NbTri);
 
 #endif

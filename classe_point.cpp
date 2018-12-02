@@ -19,11 +19,17 @@ void Point::affiche()
 	cout << this->X << " " << this->Y << endl;
 }
 
-//////////////////////////////////////////////// FONCTIONS  ////////////////////////////////////////////
+void Point::attrib_coord(double xi, double yi)
+{
+	X = xi;
+	Y = yi;
+}
+
+//////////////////////////////////////////////// FONCTIONS NON-MEMBRES ////////////////////////////////////////////
 
 Point* LecPoints(const char* name, int &N)
 {
-	double tmp;
+	double tmp, A, B;
 
 	ifstream fichier(name);
 	fichier >> N;
@@ -32,7 +38,8 @@ Point* LecPoints(const char* name, int &N)
 	for (int i = 0; i < N; ++i)
 	{	
 		// le numéro du point, on s'en fout 
-		fichier >> tmp >> listPoints[i].X >> listPoints[i].Y;
+		fichier >> tmp >> A >> B;
+		listPoints[i].attrib_coord(A,B);
 	}
 
 	fichier.close();
