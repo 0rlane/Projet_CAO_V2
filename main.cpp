@@ -13,24 +13,8 @@ int main()
     int NbPts; // nombre de points
     int NbTri; // nombre de triangles
 
-    Triangle* ListTriangle = new Triangle[5];
-    ListTriangle[3].affiche();
-
     Point* ListPoints = LecPoints("points.pts", NbPts); // liste de NbPts Points
-    //Triangle* ListTriangle = LecTriangles("listri.dat", NbTri); // liste de NbTri Triangles
-    /*
-    for (int i = 0; i < NbTri; ++i)
-    {
-    	ListTriangle[i].affiche();
-    }
-	*/
-
-    /*
-    for (int i = 0; i < NbPts; ++i)
-    {
-    	ListPoints[i].affiche();
-    }
-    */
+    Triangle* ListTriangle = LecTriangles("listri.dat", NbTri); // liste de NbTri Triangles
 
     delete[] ListPoints;
     delete[] ListTriangle;

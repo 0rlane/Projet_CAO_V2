@@ -6,11 +6,9 @@
 class Point
 {
 private:
-
-public:
 	// données
-	double X, Y;
-
+	double X,Y;
+public:
 	// constructeur & destructeur
 	Point() { X = Y = -1.; }
 	Point( double xi, double yi);
@@ -18,8 +16,11 @@ public:
 
 	// fonctions
 	void affiche(void);
+	void attrib_coord(double x, double y);
 
 };
+
+/////////////////////////////////// FONCTIONS NON-MEMBRES /////////////////////////////////////
 
 Point* LecPoints(const char* name, int &N);
 

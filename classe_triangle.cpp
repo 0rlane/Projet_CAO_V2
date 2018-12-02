@@ -29,26 +29,26 @@ void Triangle::affiche()
 	cout << endl;
 }
 
-
-//////////////////////////////////////////////// FONCTIONS  ////////////////////////////////////////////
-
-/*
-Triangle* LecTriangles(const char* name, int &N)
+void Triangle::attrib_points( int a, int b, int c)
 {
-	ifstream fichier(name);
-	fichier >> N;
+	this->coord[0] = a;
+	this->coord[1] = b;
+	this->coord[2] = c;
+}
 
+//////////////////////////////////////////////// FONCTIONS NON-MEMBRES ////////////////////////////////////////////
+
+Triangle* LecTriangles(const char* name, int &NbTri)
+{
+	fstream fichier("listri.dat");
+	fichier >> NbTri;
 	int A,B,C;
-
-	Triangle* listTriangles = new Triangle[N];
-	for (int i = 0; i < N; ++i)
+	Triangle* listTriangles = new Triangle[NbTri];
+	for (int i = 0; i < NbTri; ++i)
 	{	
 		fichier >> A >> B >> C;
-		cout << A << " " << B << " " << C << endl;
+		listTriangles[i].attrib_points(A,B,C);
 	}
-
 	fichier.close();
-
 	return listTriangles;
 }
-*/
