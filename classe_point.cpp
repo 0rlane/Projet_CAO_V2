@@ -6,42 +6,39 @@ using namespace std;
 
 /////////////////////////////////////////////// FONCTION POINT /////////////////////////////////////////////////
 
-Point::Point( double xi, double yi)
+Point::Point( const char* name )
 {
-  X = xi;
-  Y = yi;
+	double tmp;
+
+	ifstream fichier(name);
+	fichier >> this->size;
+
+	this->coord = new double*[this->size];
+	for (int i = 0; i < this->size; ++i)
+	{
+		this->coord[i] = new double[2];
+		fichier >> tmp >> this->coord[i][0] >> this->coord[i][1];
+	}  
+
+	fichier.close();
 }
 
-Point::~Point() {}
+Point::~Point() 
+{
+	cout << "destructeur de points : " << this->coord << endl;
+	for (int i = 0; i < (this->size); ++i)
+	{
+		delete[] coord[i];
+	}
+	delete[] coord;
+}
 
 void Point::affiche()
 {
-	cout << this->X << " " << this->Y << endl;
-}
-
-void Point::attrib_coord(double xi, double yi)
-{
-	X = xi;
-	Y = yi;
-}
-
-//////////////////////////////////////////////// FONCTIONS NON-MEMBRES ////////////////////////////////////////////
-
-Point* LecPoints(const char* name, int &N)
-{
-	double tmp, A, B;
-
-	ifstream fichier(name);
-	fichier >> N;
-
-	Point* listPoints = new Point[N];
-	for (int i = 0; i < N; ++i)
-	{	
-		// le numéro du point, on s'en fout 
-		fichier >> tmp >> A >> B;
-		listPoints[i].attrib_coord(A,B);
+	cout << "size = " << this->size << endl;
+	for (int i = 0; i < (this->size); ++i)
+	{
+		cout << this->coord[i][0] << " " << this->coord[i][1] << endl;
 	}
-
-	fichier.close();
-	return listPoints;
 }
+

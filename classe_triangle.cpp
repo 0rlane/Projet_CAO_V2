@@ -4,51 +4,37 @@
 #include <fstream>
 using namespace std;
 
-///////////////////////////////////////////// FONCTION TRIANGLE //////////////////////////////////////////////////
-
-Triangle::Triangle( int a, int b, int c)
+Triangle::Triangle( const char* name )
 {
-	coord[0] = a;
-	coord[1] = b;
-	coord[2] = c;
+	ifstream fichier(name);
+	fichier >> this->size;
+
+	this->points = new int*[this->size];
+	for (int i = 0; i < this->size; ++i)
+	{
+		this->points[i] = new int[3];
+		fichier >> this->points[i][0] >> this->points[i][1] >> this->points[i][2];
+	}  
+
+	fichier.close();
 }
 
 Triangle::~Triangle() 
 {
-	//cout << "destructeur de triangle : " << this->coord << endl;
-	delete[] this->coord;
+	cout << "destructeur de triangle : " << this->points << endl;
+	for (int i = 0; i < this->size; ++i)
+	{
+		delete[] this->points[i];
+	}
+	delete[] this->points;
 }
 
 void Triangle::affiche()
 {
-	cout << "triangle " << this->coord << " : ";
-	for (int i = 0; i < 3; ++i)
+	cout << "size : " << this->size << endl;
+	for (int i = 0; i < this->size; ++i)
 	{
-		cout << this->coord[i] << " ";
+		cout << this->points[i][0] << " " << this->points[i][1] << " " << this->points[i][2] << endl;
 	}
-	cout << endl;
 }
 
-void Triangle::attrib_points( int a, int b, int c)
-{
-	this->coord[0] = a;
-	this->coord[1] = b;
-	this->coord[2] = c;
-}
-
-//////////////////////////////////////////////// FONCTIONS NON-MEMBRES ////////////////////////////////////////////
-
-Triangle* LecTriangles(const char* name, int &NbTri)
-{
-	fstream fichier("listri.dat");
-	fichier >> NbTri;
-	int A,B,C;
-	Triangle* listTriangles = new Triangle[NbTri];
-	for (int i = 0; i < NbTri; ++i)
-	{	
-		fichier >> A >> B >> C;
-		listTriangles[i].attrib_points(A,B,C);
-	}
-	fichier.close();
-	return listTriangles;
-}

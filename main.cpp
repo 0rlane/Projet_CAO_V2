@@ -9,15 +9,11 @@ using namespace std;
 
 int main()
 {
+    Point ListPoints("points.pts"); // liste de NbPts Points
+    Triangle ListTriangles("listri.dat"); // liste de NbTri Triangles
 
-    int NbPts; // nombre de points
-    int NbTri; // nombre de triangles
-
-    Point* ListPoints = LecPoints("points.pts", NbPts); // liste de NbPts Points
-    Triangle* ListTriangle = LecTriangles("listri.dat", NbTri); // liste de NbTri Triangles
-
-    delete[] ListPoints;
-    delete[] ListTriangle;
+    //ListPoints.affiche();
+    //ListTriangles.affiche();
 
     cout << "FIN" << endl;
 

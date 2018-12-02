@@ -6,21 +6,18 @@ class Triangle
 {
 private:
 	// données
-	int* coord = new int[3];
+	int size;
+	int **points;
+
 public:
 	// constructeur & destructeur
-	Triangle() { coord[0]=coord[1]=coord[2]=-1; }
-	Triangle( int a, int b, int c );
+	Triangle() { size=-1; }
+	Triangle( const char* name );
 	~Triangle();
 
 	// fonctions
 	void affiche(void);
-	void attrib_points( int a, int b, int c);
 
 };
-
-////////////////////////////////// FONCTIONS NON-MEMBRES ///////////////////////////////////
-
-Triangle* LecTriangles(const char* name, int &NbTri);
 
 #endif

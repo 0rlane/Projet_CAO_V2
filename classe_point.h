@@ -7,21 +7,18 @@ class Point
 {
 private:
 	// données
-	double X,Y;
+	int size;
+	double **coord;
+
+
 public:
 	// constructeur & destructeur
-	Point() { X = Y = -1.; }
-	Point( double xi, double yi);
+	Point() { size=-1; }
+	Point( const char* name );
 	~Point();
 
 	// fonctions
 	void affiche(void);
-	void attrib_coord(double x, double y);
-
 };
-
-/////////////////////////////////// FONCTIONS NON-MEMBRES /////////////////////////////////////
-
-Point* LecPoints(const char* name, int &N);
 
 #endif
