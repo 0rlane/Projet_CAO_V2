@@ -9,8 +9,8 @@ using namespace std;
 
 int main()
 {
-    Point ListPoints("points.pts"); // liste de NbPts Points
-    Triangle ListTriangles("listri.dat"); // liste de NbTri Triangles
+    Point ListPoints("points.pts");
+    Triangle ListTriangles("listri.dat");
 
     //ListPoints.affiche();
     //ListTriangles.affiche();
